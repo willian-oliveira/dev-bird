@@ -13,6 +13,7 @@ use Zend\Stdlib\Hydrator;
  * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})})
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="SONUser\Entity\UserRepository")
  */
 class User {
 
@@ -164,6 +165,7 @@ class User {
     }
 
     /**
+     * Para setar sozinho e tem um outro parametro na classe para isso
      * @ORM\prePersist
      */
     function setUpdatedAt() {

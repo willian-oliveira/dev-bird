@@ -4,12 +4,18 @@ namespace SONUser\Form;
 
 use Zend\InputFilter\InputFilter;
 
+/**
+ * Esta classe monta o filtro para o formulario
+ */
 class UserFilter extends InputFilter {
 
+    /**
+     * Filtros
+     */
     function __construct() {
 
         $this->add(array(
-            'name' => 'nome',
+            'name' => 'name',
             'required' => true,
             'filters' => array(
                 array('name' => 'StripTags'),

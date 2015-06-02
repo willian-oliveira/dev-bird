@@ -16,11 +16,11 @@ return array(
                     ),
                 )
             ),
-            // Rota criada para a ativação do usuario por email
+            // Rota criada para a ativação do usuario por email usada na mailer/add-user.phml
             'sonuser-activate' =>array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/register/activate/[/:key]',
+                    'route' => '/register/activate[/:key]',
                     'defaults' => array(
                         'controller' => 'SONUser\Controller\Index',
                         'action' => 'activate'
@@ -51,7 +51,7 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
-// Configuração padra o parao doctrine funcionar ///////////////////////////////
+// Configuração padrao para o doctrine funcionar ///////////////////////////////
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(
@@ -65,6 +65,7 @@ return array(
                 ),
             ),
         ),
+        // Para inserir dados de teste
         'fixture' => array(
             'SONUser_fixture' => __DIR__ . '/../src/SONUser/Fixture',
         ),

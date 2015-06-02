@@ -33,6 +33,10 @@ class Module
         );
     }
     
+    /**
+     * Dados para envio de email e servico do usuario
+     * @return type
+     */
     public function getServiceConfig(){        
         return array(
             'factories' => array(
@@ -44,10 +48,9 @@ class Module
                     return $transport;
                 },
                 'SONUser\Service\User' => function($sm){
-                    $view = $sm->get('View');
                     return new Service\User($sm->get('Doctrine\ORM\EntityManager'),
                                        $sm->get('SONUser\Mail\Transport'),
-                                       $sm->get($view));
+                                       $sm->get('View'));
                 }    
             )
         );

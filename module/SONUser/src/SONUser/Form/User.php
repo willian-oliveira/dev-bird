@@ -4,8 +4,16 @@ namespace SONUser\Form;
 
 use Zend\Form\Form;
 
+/**
+ * Esta classe monta o formulario
+ */
 class User extends Form {
 
+    /**
+     * 
+     * @param type $name
+     * @param type $options
+     */
     function __construct($name = null, $options = array()) {
 
         parent::__construct('user', $options);
@@ -17,7 +25,7 @@ class User extends Form {
         $id = new \Zend\Form\Element\Hidden('id');
         $this->add($id);
 
-        $nome = new \Zend\Form\Element\Text('nome');
+        $nome = new \Zend\Form\Element\Text('name');
         $nome->setLabel('Nome: ')
                 ->setAttribute('placeholder', 'Entre com o nome');
         $this->add($nome);
