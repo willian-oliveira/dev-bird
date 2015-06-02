@@ -32,11 +32,7 @@ class Module
             ),
         );
     }
-    
-    /**
-     * Dados para envio de email e servico do usuario
-     * @return type
-     */
+
     public function getServiceConfig(){        
         return array(
             'factories' => array(
