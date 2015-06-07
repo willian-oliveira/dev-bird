@@ -26,12 +26,58 @@ return array(
                         'action' => 'activate'
                     )
                 )
-            )
+            ),
+            // Rota administrativa
+            'sonuser-admin' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/admin',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'SONUser\Controller',
+                        'controller' => 'Users',
+                        'action' => 'index'
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/:action[/:id]]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '\d+'
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'SONUser\Controller',
+                                'controller' => 'users'
+                            )
+                        )
+                    ),
+                    'paginator' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/page/:page]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'page' => '\d+'
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'SONUser\Controller',
+                                'controller' => 'users'
+                            )
+                        )
+                    )
+                )
+            )            
         )
     ),
     'controllers' => array( // Controllers do modulo
         'invokables' => array( // Controllers que serão invocados para ser utilizado no modulo apelido => caminho real
             'SONUser\Controller\Index' => 'SONUser\Controller\IndexController',            
+            'SONUser\Controller\Users' => 'SONUser\Controller\UsersController',            
         )
     ),
 ////////////////////////////////////////////////////////////////////////////////

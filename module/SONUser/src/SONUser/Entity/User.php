@@ -176,4 +176,11 @@ class User {
         $this->createdAt = new\DateTime('now');
     }
 
+    /**
+     * Converte a entidade em array e retorna
+     */
+    public function toArray(){
+        return (new Hydrator\ClassMethods())->extract($this);
+    }
+    
 }
