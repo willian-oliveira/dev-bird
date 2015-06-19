@@ -27,6 +27,18 @@ return array(
                     )
                 )
             ),
+            // Rota quando autenticado
+            'sonuser-auth' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/auth',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'SONUser\Controller',
+                        'controller' => 'Auth',
+                        'action' => 'index'
+                    )
+                )
+            ),
             // Rota administrativa
             'sonuser-admin' => array(
                 'type' => 'Literal',
@@ -78,6 +90,7 @@ return array(
         'invokables' => array( // Controllers que serão invocados para ser utilizado no modulo apelido => caminho real
             'SONUser\Controller\Index' => 'SONUser\Controller\IndexController',            
             'SONUser\Controller\Users' => 'SONUser\Controller\UsersController',            
+            'SONUser\Controller\Auth' => 'SONUser\Controller\AuthController',            
         )
     ),
 ////////////////////////////////////////////////////////////////////////////////
